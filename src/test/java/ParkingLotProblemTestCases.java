@@ -1,4 +1,5 @@
 import com.bridgelabz.service.ParkingLotSystem;
+import com.bridgelabz.utility.AirportSecurity;
 import com.bridgelabz.utility.Owner;
 import org.junit.Assert;
 import org.junit.Before;
@@ -44,5 +45,13 @@ public class ParkingLotProblemTestCases {
         parkingLotSystem.park(bike);
         parkingLotSystem.park(bus);
         Assert.assertEquals("Parking lot is full", Owner.parkingLotInfo);
+    }
+
+    @Test
+    public void givenVehicles_WhenFull_ShouldInformAirportSecurity() {
+        parkingLotSystem.park(car);
+        parkingLotSystem.park(bike);
+        parkingLotSystem.park(bus);
+        Assert.assertEquals("Parking lot is full", AirportSecurity.parkingLotInfo);
     }
 }
