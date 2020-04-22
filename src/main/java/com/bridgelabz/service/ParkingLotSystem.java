@@ -1,15 +1,33 @@
 package com.bridgelabz.service;
 
+import com.bridgelabz.utility.Owner;
+
+import java.util.HashMap;
+
 public class ParkingLotSystem {
 
-    private Object vehicle;
+    private final int parkingCapacity;
+    Integer counter=0;
+    HashMap<Integer, Object> map = new HashMap<>();
+
+    public ParkingLotSystem(int parkingCapacity) {
+        this.parkingCapacity = parkingCapacity;
+    }
 
     public boolean park(Object vehicle) {
-        this.vehicle = vehicle;
-        return vehicle != null;
+        if(map.size() == parkingCapacity){
+            Owner.parkingLotInfo = "Parking lot is full";
+        }
+        map.put(counter,vehicle);
+        counter++;
+        return true;
     }
 
     public boolean unPark(Object vehicle) {
-        return this.vehicle == vehicle;
+        if (map.containsValue(vehicle)){
+            map.remove(vehicle);
+            return true;
+        }
+        return false;
     }
 }
