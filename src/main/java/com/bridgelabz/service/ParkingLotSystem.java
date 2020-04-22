@@ -1,5 +1,6 @@
 package com.bridgelabz.service;
 
+import com.bridgelabz.utility.AirportSecurity;
 import com.bridgelabz.utility.Owner;
 
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class ParkingLotSystem {
     public boolean park(Object vehicle) {
         if(map.size() == parkingCapacity){
             Owner.parkingLotInfo = "Parking lot is full";
+            AirportSecurity.parkingLotInfo = "Parking lot is full";
         }
         map.put(counter,vehicle);
         counter++;
